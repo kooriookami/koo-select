@@ -55,7 +55,7 @@ export default {
       this.close();
     },
     confirm() {
-      const option = this.options.find(item => item[this.valueKey] === this.localValue);
+      const option = this.multiple ? this.options.filter(item => this.localValue?.includes(item[this.valueKey])) : this.options.find(item => item[this.valueKey] === this.localValue);
       this.$emit('confirm', this.localValue, option);
       this.$emit('change', this.localValue, option);
       this.$emit('input', this.localValue);
